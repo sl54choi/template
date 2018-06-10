@@ -1,0 +1,42 @@
+[e.g.]
+"certficate" site:developer.tizen.org
+"hlleo" -youtube.com
+'src="https://www.youtube.com' site:developer.tizen.org -forums
+filetype:html site:developer.tizen.org
+link:developer.tizen.org site:stackoverflow.com
+link:smartthings site:stackoverflow.com
+
+[Reference]
+https://silveryflow.blog.me/120127644161
+https://stackoverflow.com/questions/19735250/running-a-python-script-from-php
+https://www.raspberrypi.org/forums/viewtopic.php?t=177851
+http://www.itworld.co.kr/news/105290
+http://strogay.tistory.com/entry/%EA%B5%AC%EA%B8%80%EB%A7%81-%EB%B0%8F-%EA%B5%AC%EA%B8%80-%EA%B2%80%EC%83%89-%ED%8C%81-21%EA%B0%80%EC%A7%80%EB%A1%9C-%EA%B5%AC%EA%B8%80%EA%B2%80%EC%83%89%EC%9D%98-%EB%8B%AC%EC%9D%B8%EB%90%98%EA%B8%B0-1
+http://channelofchaos.tistory.com/60
+
+[Environment]
+sudo chown -R www-data:www-data /var/www/html
+sudo chmod -R 755 /var/www/html
+
+<start.sh>
+#!/bin/bash
+/usr/bin/sudo ./run.sh $1
+
+<run.sh>
+#!/bin/bash
+sudo python3.5 /var/www/html/wp-content/plugins/0misspelling-checker/includes/test.py -i /var/www/html/wp-content/plugins/0misspelling-checker/includes/input.csv -o /var/www/html/result/output.csv -l /var/www/html/result/output.log
+
+</etc/sudoers.d/mysudoers>
+ubuntu1604	ALL=NOPASSWD: POWEROFF, SHUTDOWN, HALT, /usr/bin/update-manager, /usr/bin/apt-get
+www-data	ALL=NOPASSWD: /var/www/html/wp-content/plugins/0misspelling-checker/includes/start.sh
+%admin		ALL=(ALL) NOPASSWD: ALL
+
+<php samples>
+			//$command = 'pwd';
+			//$command = 'ls -al ./wp-content/plugins/0misspelling-checker/includes';
+			//$command = 'python ./wp-content/plugins/0misspelling-checker/includes/hello.py';
+			//$command = "python ./wp-content/plugins/0misspelling-checker/includes/test00.py -U root -P 'qwer1234!@' -H 127.0.0.1 -D wp_aitest";
+			$command = "/usr/bin/sudo -u root -S python3.5 ./wp-content/plugins/0misspelling-checker/includes/test00.py -U root -P 'qwer1234!@' -H 127.0.0.1 -D wp_aitest < ~/.sudopass/sudopass.secret";
+			//$command = 'python3.5 ./wp-content/plugins/0misspelling-checker/includes/test.py -i /var/www/html/wp-content/plugins/0misspelling-checker/includes/input.csv -o /var/www/html/result/output.csv -l /var/www/html/result/output.log';
+			$message = exec($command, $out, $status);
+                        print_r($message);
