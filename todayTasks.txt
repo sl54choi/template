@@ -1,0 +1,16 @@
+완료
+[ Data Analytics ]
+. 시간을 파일명을 변환할 수 있게 변환하기
+  : 결과값을 다운로드 받을 수 있게, 링크를 띄우기
+. 시간을 참조한 파일명으로 DB 쿼리(데이터 쓰기)
+  : misspelling 결과를 DB에 연계하기
+
+해야할 일
+[ Data Analytics ]
+. input.csv 파일을 importing 할 수 있는 form 추가 및 코드 연계
+. 시간을 참조한 파일명으로 DB 쿼리(기준 정보로 확인한 ID에 데이터 쓰기)
+. submit 버튼을 누르고, loading 화면 띄우기
+
+[ Visualization ]
+. 결과값을 게시판 형태로 조회하기
+  : 게시판 플러그인을 센싱하기
