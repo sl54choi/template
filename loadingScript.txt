@@ -1,0 +1,15 @@
+<form id="setupform" action="post">
+  <div id="loading2" style="display:none;"><img src="https://smallenvelop.com/wp-content/uploads/2014/08/Preloader_8.gif" alt="" />Loading!</div>
+  <input id="submit" value="Click!" type="submit" />
+</form>
+
+<script type="text/javascript">
+(function (d) {
+  d.getElementById('setupform').onsubmit = function () {
+    d.getElementById('submit').style.display = 'none';
+    d.getElementById('loading2').style.display = 'block';
+  };
+}(document));
+</script>
+
+https://premium.wpmudev.org/forums/topic/how-do-i-show-loading-animation-after-registration-onclick-event
